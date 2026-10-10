@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character counter</title>
+</head>
+
+<body>
+    <style>
+        body{
+            background-color:beige;
+            text-align: center;
+            padding: 50px;
+        }
+      
+        .container{
+            background-color: white;
+            text-align: center;
+            width: 450px;
+            border: solid black 2px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px gray;
+            margin: auto;
+            margin-top: 120px;
+           
+        }
+        h2,p,textarea{
+            background-color: white;
+        }
+        textarea{
+            width:270px;
+            height: 120px;
+            border: solid black 1px;
+            border-radius: 10px;
+            resize: none;
+        }
+        #warning{
+            font-size: 12px;
+        }
+    </style>
+    <div class="container">
+        <h2></h2>MESSAGE BOX</h2>
+        <p>200 characters max</p>
+        <textarea id="message" placeholder="Type your message here..."  maxlength="200"></textarea>
+         <p id="counter">0/200 characters</p>
+        <p id="warning" style="color: red;"></p>
+    </div>
+    <script>
+        let message = document.getElementById("message")
+        let counter = document.getElementById("counter")
+        let warning = document.getElementById("warning")
+        let maxlength = "200"
+         
+        message.addEventListener("input",function(){
+            let typed = message.value.length
+            let remaining = maxlength - typed
+            counter.textContent = typed +"/200 characters " + remaining +" remaining"
+
+            if (typed>=maxlength){
+                warning.textContent="warning! upto 200 characters only allowed"
+                counter.style.color="red"
+            }
+            else{
+                counter.style.color="green"
+                warning.textContent=""
+            }
+        })
+    </script>
+</body>
+
+</html>
